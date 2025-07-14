@@ -1,0 +1,129 @@
+<div class="auth-form-container">
+  <p-toast></p-toast>
+  
+
+  <!-- Popup para mostrar configuración MFA -->
+  <p-dialog 
+    header="¡MFA Configurado Automáticamente!" 
+    [(visible)]="showMFAConfigDialog" 
+    [modal]="true" 
+    [closable]="false"
+    [style]="{width: '600px'}"
+    styleClass="mfa-config-dialog"
+  >
+    <div class="mfa-config-content" *ngIf="mfaConfigData">
+      <div class="text-center mb-4">
+        <i class="pi pi-check-circle" style="font-size: 3rem; color: #4CAF50;"></i>
+        <h3>¡Autenticación de Dos Factores Configurada!</h3>
+        <p>Se ha configurado automáticamente tu MFA para mayor seguridad.</p>
+      </div>
+      
+      <div class="mfa-info">
+        <h4>🔑 Clave secreta (alternativa al QR):</h4>
+        <div class="secret-key mb-3">
+          <code>{{ mfaConfigData.secret_key }}</code>
+          <p-button 
+            icon="pi pi-copy" 
+            (click)="copyToClipboard(mfaConfigData.secret_key)"
+            [text]="true"
+            size="small"
+          ></p-button>
+        </div>
+      </div>
+    </div>
+    
+    <ng-template pTemplate="footer">
+      <p-button 
+        label="Entendido, Continuar" 
+        (click)="closeMFADialog()" 
+        styleClass="p-button-success"
+      ></p-button>
+    </ng-template>
+  </p-dialog>
+  
+  <p-card class="login-card">
+    <ng-template pTemplate="header">
+      <div class="login-header">
+        <img src="/assets/mencha.png" alt="Logo Hospital" class="auth-logo">
+        <h2>Acceso al Sistema</h2>
+        <p>Portal de personal médico autorizado</p>
+      </div>
+    </ng-template>
+    
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="p-field">
+        <label for="email">Correo Electrónico</label>
+        <input 
+          pInputText 
+          id="email" 
+          formControlName="email" 
+          placeholder="nombre@email.com"
+          class="p-inputtext"
+          [class.ng-invalid]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
+        />
+        <small 
+          class="p-error" 
+          *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
+        >
+          El correo electrónico es necesario y debe ser válido
+        </small>
+      </div>
+      
+      <div class="p-field">
+        <label for="password">Contraseña</label>
+        <p-password 
+          formControlName="password" 
+          placeholder="Ingresa una contraseña"
+          [toggleMask]="true"
+          [feedback]="false"
+          class="p-password"
+        ></p-password>
+        <small 
+          class="p-error" 
+          *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+        >
+          La contraseña es necesaria
+        </small>
+      </div>
+      
+      <!-- Campo MFA siempre visible -->
+      <div class="p-field">
+        <label for="totp_code">Código MFA (Si ya tienes tus credenciales)</label>
+        <input 
+          pInputText 
+          id="totp_code" 
+          formControlName="totp_code" 
+          placeholder="Ingresa el código de 6 dígitos"
+          class="p-inputtext"
+          maxlength="6"
+          [class.ng-invalid]="loginForm.get('totp_code')?.invalid && loginForm.get('totp_code')?.touched"
+        />
+        <small class="p-help">
+          Si tu cuenta ya tiene tu codigo MFA activo, ingresa el numero que obtuviste con la autenticación
+        </small>
+        <small 
+          class="p-error" 
+          *ngIf="loginForm.get('totp_code')?.invalid && loginForm.get('totp_code')?.touched"
+        >
+          El código MFA es necesario para acceder
+        </small>
+      </div>
+      
+      <div class="p-field">
+        <p-button 
+          label="Iniciar Sesión" 
+          type="submit" 
+          [disabled]="loginForm.invalid"
+          class="p-button"
+          [loading]="isLoading"
+        ></p-button>
+      </div>
+    </form>
+    
+    <ng-template pTemplate="footer">
+      <div class="text-center mt-3">
+        <p>¿Aún no tienes cuenta? <a href="#" (click)="goToRegister($event)">Regístrate</a></p>
+      </div>
+    </ng-template>
+  </p-card>
+</div>

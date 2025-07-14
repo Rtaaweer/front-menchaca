@@ -1,0 +1,832 @@
+
+
+@import 'primeicons/primeicons.css';
+
+
+:root {
+  --primary-color: #3B82F6;
+  --primary-color-text: #ffffff;
+  --surface-ground: #f8fafc;
+  --surface-card: #ffffff;
+  --surface-border: #e2e8f0;
+  --text-color: #1e293b;
+  --text-color-secondary: #64748b;
+  --border-radius: 6px;
+  --shadow-1: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-2: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: var(--font-family);
+    background-color: var(--surface-ground);
+}
+
+.auth-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #ffffff;
+    padding: 2rem;
+}
+
+.p-card {
+    width: 100%;
+    max-width: 420px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.15);
+    background-color: #f9fbff;
+    border: 1px solid #dbeafe;
+    overflow: hidden;
+}
+
+.p-card > .text-center {
+    padding: 2rem 1.5rem 1rem 1.5rem;
+    color: #1e293b;
+    font-family: 'Inter', sans-serif;
+}
+
+.p-card > .text-center h1 {
+    font-weight: 700;
+    font-size: 2rem;
+    color: #2563eb;
+    margin-bottom: 0.25rem;
+}
+
+.p-card > .text-center p {
+    font-size: 1rem;
+    color: #4b5563;
+    margin-top: 0;
+}
+
+.p-field label {
+    font-weight: 600;
+    color: #2563eb;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.p-inputtext, .p-password input, .p-dropdown {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    border: 1.5px solid #bfdbfe;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.p-inputtext:focus, .p-password input:focus, .p-dropdown:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 8px rgba(37, 99, 235, 0.5);
+    outline: none;
+}
+
+.p-button {
+    width: 100%;
+    background-color: #2563eb;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 0.75rem;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.p-button:hover:not(:disabled) {
+    background-color: #1e40af;
+}
+
+.p-button:disabled {
+    background-color: #93c5fd;
+    cursor: not-allowed;
+}
+
+.text-center.mt-3 p {
+    color: #1e293b;
+    font-weight: 600;
+}
+
+.text-center.mt-3 a {
+    color: #3b82f6;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.text-center.mt-3 a:hover {
+    color: #1e40af;
+    text-decoration: underline;
+}
+
+/* Password validation icons */
+.requirement-item {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #6b7280;
+    margin-top: 0.25rem;
+}
+
+.requirement-item.valid {
+    color: #2563eb;
+    font-weight: 600;
+}
+
+.requirement-item i {
+    margin-right: 0.5rem;
+}
+
+/* MFA dialog styling */
+.mfa-config-dialog .mfa-config-content {
+    padding: 1rem 2rem;
+    font-family: 'Inter', sans-serif;
+    color: #1e293b;
+}
+
+.mfa-config-dialog .secret-key, .mfa-dialog .secret-key {
+    background-color: #e0e7ff;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    font-family: monospace;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.mfa-config-dialog p-button, .mfa-dialog p-button {
+    font-weight: 700;
+}
+
+/* Estilos para los formularios de autenticación */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+  background-color: var(--surface-ground);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.15);
+  background-color: #ffffff;
+  border: 1px solid #dbeafe;
+  padding: 2rem;
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Estilos para la imagen con marco circular */
+.auth-logo {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  border-radius: 50%;
+  border: 3px solid #2563eb;
+  padding: 8px;
+  background-color: white;
+  margin-bottom: 1rem;
+}
+
+/* Estilos para los botones de autenticación */
+.p-button,
+.p-button.p-component,
+[styleClass="blue-button"] {
+  background-color: #2563eb !important;
+  border-color: #2563eb !important;
+  color: white !important;
+}
+
+.p-button:hover:not(:disabled),
+.p-button.p-component:hover:not(:disabled),
+[styleClass="blue-button"]:hover:not(:disabled) {
+  background-color: #1d4ed8 !important;
+  border-color: #1d4ed8 !important;
+}
+
+.auth-footer {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.auth-footer-text {
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+}
+
+.auth-footer-link {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.auth-footer-link:hover {
+  text-decoration: underline;
+}
+
+.p-card > .text-center h1 {
+    font-weight: 700;
+    font-size: 2rem;
+    color: #2563eb;
+    margin-bottom: 0.25rem;
+}
+
+.p-card > .text-center p {
+    font-size: 1rem;
+    color: #4b5563;
+    margin-top: 0;
+}
+
+.p-field label {
+    font-weight: 600;
+    color: #2563eb;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.p-inputtext, .p-password input, .p-dropdown {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    border: 1.5px solid #bfdbfe;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.p-inputtext:focus, .p-password input:focus, .p-dropdown:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 8px rgba(37, 99, 235, 0.5);
+    outline: none;
+}
+
+.p-button {
+    width: 100%;
+    background-color: #2563eb;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 0.75rem;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.p-button:hover:not(:disabled) {
+    background-color: #1e40af;
+}
+
+.p-button:disabled {
+    background-color: #93c5fd;
+    cursor: not-allowed;
+}
+
+.text-center.mt-3 p {
+    color: #1e293b;
+    font-weight: 600;
+}
+
+.text-center.mt-3 a {
+    color: #3b82f6;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.text-center.mt-3 a:hover {
+    color: #1e40af;
+    text-decoration: underline;
+}
+
+/* Password validation icons */
+.requirement-item {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #6b7280;
+    margin-top: 0.25rem;
+}
+
+.requirement-item.valid {
+    color: #2563eb;
+    font-weight: 600;
+}
+
+.requirement-item i {
+    margin-right: 0.5rem;
+}
+
+/* MFA dialog styling */
+.mfa-config-dialog .mfa-config-content {
+    padding: 1rem 2rem;
+    font-family: 'Inter', sans-serif;
+    color: #1e293b;
+}
+
+.mfa-config-dialog .secret-key, .mfa-dialog .secret-key {
+    background-color: #e0e7ff;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    font-family: monospace;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.mfa-config-dialog p-button, .mfa-dialog p-button {
+    font-weight: 700;
+}
+
+/* Estilos para textos blancos en formularios de autenticación */
+.auth-card label,
+.auth-card p,
+.auth-card h2,
+.auth-card h3,
+.auth-card .p-help,
+.auth-card small:not(.p-error),
+.p-card.login-card label,
+.p-card.login-card p,
+.p-card.login-card h2,
+.p-card.login-card h3,
+.p-card.login-card .p-help,
+.p-card.login-card small:not(.p-error),
+.p-card.register-card label,
+.p-card.register-card p,
+.p-card.register-card h1,
+.p-card.register-card h2,
+.p-card.register-card h3,
+.p-card.register-card .p-help,
+.p-card.register-card small:not(.p-error),
+.register-header p,
+.login-header p,
+.text-center.mt-3 p {
+  color: white !important;
+}
+/* Mantener el color del enlace para que sea visible */
+.text-center.mt-3 a {
+  color: #93c5fd !important;
+  font-weight: 700;
+}
+
+.text-center.mt-3 a:hover {
+  color: #bfdbfe !important;
+}
+
+/* Asegurar que los textos de error sigan siendo visibles */
+.p-error {
+  color: #f87171 !important;
+}
+
+/* Ajustar el color de los textos de validación de contraseña */
+.requirement-item {
+  color: #e2e8f0 !important;
+}
+
+.requirement-item.valid {
+  color: #4ade80 !important;
+}
+
+.requirement-item.valid {
+    color: #2563eb;
+    font-weight: 600;
+}
+
+.requirement-item i {
+    margin-right: 0.5rem;
+}
+
+/* MFA dialog styling */
+.mfa-config-dialog .mfa-config-content {
+    padding: 1rem 2rem;
+    font-family: 'Inter', sans-serif;
+    color: #1e293b;
+}
+
+.mfa-config-dialog .secret-key, .mfa-dialog .secret-key {
+    background-color: #e0e7ff;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    font-family: monospace;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.mfa-config-dialog p-button, .mfa-dialog p-button {
+    font-weight: 700;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .p-card {
+        max-width: 100%;
+        margin: 0 1rem;
+    }
+}
+
+.p-field {
+    margin-bottom: 1rem;
+}
+
+.p-button {
+    width: 100%;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mt-3 {
+    margin-top: 1rem;
+}
+
+.p-inputtext {
+    width: 100%;
+}
+
+.p-password {
+    width: 100%;
+}
+
+.p-password input {
+    width: 100%;
+}
+
+.p-dropdown {
+    width: 100%;
+}
+
+.main-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: var(--surface-card);
+    border-right: 1px solid var(--surface-border);
+}
+
+.content {
+    flex: 1;
+    padding: 1rem;
+    background-color: var(--surface-ground);
+}
+
+.header {
+    background-color: var(--primary-color);
+    color: var(--primary-color-text);
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.mb-3 {
+    margin-bottom: 1rem;
+}
+
+.mt-2 {
+    margin-top: 0.5rem;
+}
+
+.text-right {
+    text-align: right;
+}
+
+
+@media (max-width: 768px) {
+    .main-layout {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--surface-border);
+    }
+    
+    .card-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+.p-datatable {
+    margin-top: 1rem;
+}
+
+.p-datatable .p-datatable-header {
+    background-color: var(--surface-card);
+    border: 1px solid var(--surface-border);
+}
+
+
+.form-container {
+    background-color: var(--surface-card);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-2);
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-top: 2rem;
+}
+
+
+.p-message {
+    margin-bottom: 1rem;
+}
+
+
+.p-menubar {
+    margin-bottom: 1rem;
+}
+
+
+.p-dialog {
+    min-width: 300px;
+}
+
+.p-dialog .p-dialog-content {
+    padding: 1rem;
+}
+
+
+.auth-form-container .p-card .p-card-header {
+    text-align: center;
+    padding: 2rem 2rem 1rem 2rem;
+    background: linear-gradient(135deg, var(--primary-color) 0%, #1d4ed8 100%);
+    color: white;
+    margin: -1.5rem -1.5rem 1.5rem -1.5rem;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.auth-form-container .p-card .p-card-header h1 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.75rem;
+    font-weight: 600;
+}
+
+.auth-form-container .p-card .p-card-header p {
+    margin: 0;
+    opacity: 0.9;
+    font-size: 0.95rem;
+}
+
+
+.p-field label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text-color);
+    font-size: 0.875rem;
+}
+
+.p-field .p-error {
+    color: #ef4444;
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+    display: block;
+}
+
+.p-inputtext.ng-invalid.ng-touched,
+.p-password.ng-invalid.ng-touched .p-password-input {
+    border-color: #ef4444;
+    box-shadow: 0 0 0 1px #ef4444;
+}
+
+
+.p-button[loading] {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
+}
+
+
+.medical-card {
+    border-left: 4px solid var(--primary-color);
+    background: var(--surface-card);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-1);
+    transition: box-shadow 0.2s ease;
+}
+
+.medical-card:hover {
+    box-shadow: var(--shadow-2);
+}
+
+.patient-info {
+    background: #f0f9ff;
+    border: 1px solid #bae6fd;
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.urgent {
+    border-left-color: #ef4444 !important;
+    background: #fef2f2;
+}
+
+.completed {
+    border-left-color: #10b981 !important;
+    background: #f0fdf4;
+}
+
+.pending {
+    border-left-color: #f59e0b !important;
+    background: #fffbeb;
+}
+
+
+.status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+}
+
+.status-badge.urgent {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.status-badge.completed {
+    background: #dcfce7;
+    color: #16a34a;
+}
+
+.status-badge.pending {
+    background: #fef3c7;
+    color: #d97706;
+}
+
+
+.medical-nav {
+    background: var(--surface-card);
+    border-bottom: 1px solid var(--surface-border);
+    padding: 1rem 0;
+}
+
+.medical-nav .p-menubar {
+    border: none;
+    background: transparent;
+}
+
+
+.medical-table .p-datatable-thead > tr > th {
+    background: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    border: none;
+}
+
+.medical-table .p-datatable-tbody > tr:nth-child(even) {
+    background: #f8fafc;
+}
+
+.medical-table .p-datatable-tbody > tr:hover {
+    background: #e2e8f0;
+}
+
+
+.medical-form {
+    background: var(--surface-card);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-1);
+    margin-bottom: 2rem;
+}
+
+.medical-form .form-section {
+    border-bottom: 1px solid var(--surface-border);
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.medical-form .form-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.medical-form .section-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.medical-form .section-title i {
+    color: var(--primary-color);
+}
+
+
+@media (max-width: 640px) {
+    .auth-form-container {
+        padding: 1rem;
+    }
+    
+    .p-card {
+        max-width: 100%;
+        margin: 0;
+    }
+    
+    .medical-form {
+        padding: 1rem;
+    }
+    
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+    
+    .card-container {
+        gap: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .auth-form-container .p-card .p-card-header {
+        padding: 1.5rem 1rem 1rem 1rem;
+        margin: -1rem -1rem 1rem -1rem;
+    }
+    
+    .auth-form-container .p-card .p-card-header h1 {
+        font-size: 1.5rem;
+    }
+}
+
+.logo-container {
+  margin-bottom: 2rem;
+}
+
+.logo-container .logo {
+  width: 120px;
+  height: auto;
+  margin-bottom: 0.5rem;
+}
+
+.logo-container h1 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 1.75rem;
+  color: #2563eb;
+  margin: 0;
+}
